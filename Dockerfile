@@ -2,6 +2,7 @@ FROM java:openjdk-7
 MAINTAINER mkroli
 
 ENV KARAF_VERSION=2.3.11
+ENV KARAF_DEBUG true
 
 RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz; \
     mkdir /opt/karaf; \
@@ -11,6 +12,6 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
     sed -i 's/^\(felix\.fileinstall\.dir\s*=\s*\).*$/\1\/deploy/' /opt/karaf/etc/org.apache.felix.fileinstall-deploy.cfg
 
 VOLUME ["/deploy"]
-EXPOSE 1099 8101 44444
+EXPOSE 1099 8101 44444 5005
 
 CMD ["./opt/karaf/bin/karaf"]
