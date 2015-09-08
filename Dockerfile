@@ -1,7 +1,7 @@
 FROM java:openjdk-7
 MAINTAINER mkroli
 
-ENV KARAF_VERSION=4.0.1
+ENV KARAF_VERSION=2.3.11
 
 RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz; \
     mkdir /opt/karaf; \
