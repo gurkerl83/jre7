@@ -13,13 +13,16 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
 
 ENV JAVA_VERSION=7u79
 
-RUN wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-b15/jre-${JAVA_VERSION}-macosx-x64.tar.gz; \
-    tar xpfo jre-${JAVA_VERSION}-macosx-x64.tar.gz -C /deploy --strip 1; \
-    rm jre-${JAVA_VERSION}-macosx-x64.tar.gz
+RUN wget -q -O /deploy \
+       --no-check-certificate --no-cookies \
+       --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+       http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-b15/jre-${JAVA_VERSION}-macosx-x64.tar.gz | \
+     tar --no-same-owner -xzf /deploy/jre
 
-RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz; \
-    tar --strip-components=1 -C /deploy -xzf apache-karaf-${KARAF_VERSION}.tar.gz; \
-    rm apache-karaf-${KARAF_VERSION}.tar.gz
+RUN wget -q -O /deploy \
+       --no-check-certificate --no-cookies \
+       http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz | \
+     tar --no-same-owner -xzf /deploy/karaf
 
 VOLUME ["/deploy"]
 EXPOSE 1099 8101 44444 5005
