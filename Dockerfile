@@ -17,12 +17,11 @@ RUN wget --no-check-certificate --no-cookies \
         --header "Cookie: oraclelicense=accept-securebackup-cookie" \
         http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-b15/jre-${JAVA_VERSION}-macosx-x64.tar.gz | \
         mkdir /deploy/jre | \
-        tar -xzf /deploy/jre
+        tar -C /deploy/jre -xzf -
 
-RUN wget --no-check-certificate --no-cookies \
-        http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz | \
+RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz | \
         mkdir /deploy/karaf | \
-        tar -xzf /deploy/karaf
+        tar -C /deploy/karaf -xzf -
 
 VOLUME ["/deploy"]
 EXPOSE 1099 8101 44444 5005
