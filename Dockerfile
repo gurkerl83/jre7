@@ -33,8 +33,10 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
 
 #COPY tmpDeploy deploy
 
-RUN cp -r /tmpDeploy/jre /deploy
-RUN cp -r /tmpDeploy/karaf /deploy
+RUN cp -r /tmpDeploy/jre/ /deploy
+RUN cp -r /tmpDeploy/karaf/ /deploy
+
+VOLUME ["/deploy"]
 
 #ENTRYPOINT ["/bin/cp","-r", "/tmp/iso/boot","/data"]
 
