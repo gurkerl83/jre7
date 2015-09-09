@@ -15,7 +15,7 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
 ENV JAVA_VERSION=7u79
 
 RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz | \
-        tar -C /deploy/karaf -xzf -
+        tar xzf - -C /deploy/karaf
 
 VOLUME ["/deploy"]
 EXPOSE 1099 8101 44444 5005
