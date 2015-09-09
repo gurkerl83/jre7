@@ -1,7 +1,7 @@
 FROM java:openjdk-7 
 #FROM busybox
 
-MAINTAINER gurkerl83
+MAINTAINER Markus Gritsch
 
 ENV JAVA_VERSION=7u79
 ENV KARAF_VERSION=2.3.11
@@ -33,7 +33,8 @@ VOLUME ["/deploy"]
 
 #COPY tmpDeploy deploy
 
-RUN cp -r /tmpDeploy /deploy
+RUN cp -r /tmpDeploy/jre /deploy
+RUN cp -r /tmpDeploy/karaf /deploy
 
 #ENTRYPOINT ["/bin/cp","-r", "/tmp/iso/boot","/data"]
 
