@@ -31,7 +31,7 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
 
 VOLUME ["/deploy"]
 
-COPY /tmpDeploy /deploy
+#COPY /tmpDeploy /deploy
 
 #CMD ["./opt/karaf/bin/karaf"]
 CMD /bin/sh
