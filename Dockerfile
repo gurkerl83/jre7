@@ -14,9 +14,15 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
 
 ENV JAVA_VERSION=7u79
 
-RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz | \
-    tar --strip-components=1 -C /deploy/karaf -xzf apache-karaf-${KARAF_VERSION}.tar.gz | \
-    rm apache-karaf-${KARAF_VERSION}.tar.gz
+RUN wget --no-check-certificate --no-cookies \
+    --header "Cookie: oraclelicense=accept-securebackup-cookie" \
+    http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-b15/jre-${JAVA_VERSION}-macosx-x64.tar.gz -O /deploy/jre.tar.gz && \
+    mkdir /deploy/jre && \
+    tar xzf /deploy/jre.tar.gz -C /deploy/jre
+
+RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz -O /deploy/karaf.tar.gz && \
+    mkdir /deploy/karaf && \
+    tar xzf /deploy/karaf.tar.gz -C /deploy/karaf
 
 VOLUME ["/deploy"]
 EXPOSE 1099 8101 44444 5005
