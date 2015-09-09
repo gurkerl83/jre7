@@ -13,12 +13,6 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
 
 ENV JAVA_VERSION=7u79
 
-RUN wget --no-check-certificate --no-cookies \
-        --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-        http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-b15/jre-${JAVA_VERSION}-macosx-x64.tar.gz | \
-        mkdir /deploy/jre | \
-        tar -C /deploy/jre -xzf -
-
 RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz | \
         mkdir /deploy/karaf | \
         tar -C /deploy/karaf -xzf -
