@@ -29,7 +29,7 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
     mkdir /tmpDeploy/karaf && \
     tar xzf /tmpDeploy/karaf.tar.gz -C /tmpDeploy/karaf
 
-VOLUME ["/deploy"]
+#VOLUME ["/deploy"]
 
 #COPY tmpDeploy deploy
 
