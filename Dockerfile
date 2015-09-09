@@ -14,22 +14,22 @@ EXPOSE 1099 8101 44444 5005
 #    mkdir /deploy; \
 #    sed -i 's/^\(felix\.fileinstall\.dir\s*=\s*\).*$/\1\/deploy/' /opt/karaf/etc/org.apache.felix.fileinstall-deploy.cfg
 
-RUN mkdir /tmp && \
-    mkdir /deploy
+RUN mkdir /tmpDeploy
+RUN mkdir /deploy
 
 RUN wget --no-check-certificate --no-cookies \
     --header "Cookie: oraclelicense=accept-securebackup-cookie" \
-    http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-b15/jre-${JAVA_VERSION}-macosx-x64.tar.gz -O /tmp/jre.tar.gz && \
-    mkdir /tmp/jre && \
-    tar xzf /tmp/jre.tar.gz -C /tmp/jre
+    http://download.oracle.com/otn-pub/java/jdk/${JAVA_VERSION}-b15/jre-${JAVA_VERSION}-macosx-x64.tar.gz -O /tmpDeploy/jre.tar.gz && \
+    mkdir /tmpDeploy/jre && \
+    tar xzf /tmpDeploy/jre.tar.gz -C /tmpDeploy/jre
 
-RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz -O /tmp/karaf.tar.gz && \
-    mkdir /tmp/karaf && \
-    tar xzf /tmp/karaf.tar.gz -C /tmp/karaf
+RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz -O /tmpDeploy/karaf.tar.gz && \
+    mkdir /tmpDeploy/karaf && \
+    tar xzf /tmpDeploy/karaf.tar.gz -C /tmpDeploy/karaf
 
 VOLUME ["/deploy"]
 
-COPY /tmp /deploy
+COPY /tmpDeploy /deploy
 
 #CMD ["./opt/karaf/bin/karaf"]
 CMD /bin/sh
