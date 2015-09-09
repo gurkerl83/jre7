@@ -1,4 +1,6 @@
-FROM busybox
+FROM java:openjdk-7 
+#FROM busybox
+
 MAINTAINER gurkerl83
 
 ENV JAVA_VERSION=7u79
