@@ -14,8 +14,8 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
 
 ENV JAVA_VERSION=7u79
 
-RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz; \
-    tar --strip-components=1 -C /deploy/karaf -xzf apache-karaf-${KARAF_VERSION}.tar.gz; \
+RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF_VERSION}.tar.gz | \
+    tar --strip-components=1 -C /deploy/karaf -xzf apache-karaf-${KARAF_VERSION}.tar.gz | \
     rm apache-karaf-${KARAF_VERSION}.tar.gz
 
 VOLUME ["/deploy"]
