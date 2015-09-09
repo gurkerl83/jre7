@@ -9,7 +9,6 @@ RUN wget http://apache.openmirror.de/karaf/${KARAF_VERSION}/apache-karaf-${KARAF
     tar --strip-components=1 -C /opt/karaf -xzf apache-karaf-${KARAF_VERSION}.tar.gz; \
     rm apache-karaf-${KARAF_VERSION}.tar.gz; \
     mkdir /deploy; \
-    mkdir /deploy/karaf; \
     sed -i 's/^\(felix\.fileinstall\.dir\s*=\s*\).*$/\1\/deploy/' /opt/karaf/etc/org.apache.felix.fileinstall-deploy.cfg
 
 ENV JAVA_VERSION=7u79
